@@ -1,0 +1,9 @@
+library identifier: 'jenkins-shared-library@feature/pace-on-pace', retriever: modernSCM(
+  [$class: 'GitSCMSource',
+   remote: 'https://github.com/UST-PACE/pace_jenkins_shared_library.git',
+    credentialsId: 'GITHUB_CREDS'])
+
+ciMaven{
+    microserviceName = "pace-deployment-git-proxy"
+  	sonarOptions = "-Dcheckstyle.skip -Dsonar.projectKey=pace-deployment-git-proxy -Dsonar.projectName=pace-deployment-git-proxy"
+}
