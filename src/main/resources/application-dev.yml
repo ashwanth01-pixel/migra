@@ -1,0 +1,11 @@
+app:
+  git:
+    checkout-path: c:/_pace_gitproxy_data
+
+server:
+  error:
+    include-stacktrace: always
+
+logging:
+  level:
+    com.ust.gitproxy: debug
