@@ -1,0 +1,12 @@
+For generating <b>X-Credentials</b> header it's necessary to have two types of credentials, one for GIT protocol
+access and another - for HTTP REST access. Both depend on SCM tool that you want to access.
+
+<pre>
+{
+  "git": "git credentials", // ex. "username password"
+  "proxy": "rest api credentials" // ex. "Authorization Basic dXNlcm5hbWU6cGFzc3dvcmQ="
+}
+</pre>
+
+To get the token, this JSON should be Base64 encoded. The converted string can be used as a value
+for <b>X-Credentials</b> header.
