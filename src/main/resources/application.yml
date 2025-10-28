@@ -1,0 +1,45 @@
+app:
+  proxy:
+    connect-timeout: 5s
+    request-timeout: 55s
+    max-per-route: 100
+    max-total: 250
+  git:
+    checkout-path: ${java.io.tmpdir}
+    executor-shutdown-timeout: 10s
+
+server:
+  port: 8088
+  forward-headers-strategy: framework
+  error:
+    include-message: always
+
+spring:
+  application:
+    name: 'pace-git-proxy'
+  mvc:
+    throw-exception-if-no-handler-found: true
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  web:
+    resources:
+      add-mappings: false
+
+springdoc:
+  writer-with-order-by-keys: true
+  swagger-ui:
+    groups-order: asc
+    disable-swagger-default-url: true
+  group-configs:
+    - group: All
+      packages-to-scan: com.ust.gitproxy.controller
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,prometheus
+
+logging:
+  level:
+    org.springframework.web.servlet.PageNotFound: off
